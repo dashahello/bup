@@ -1,19 +1,3 @@
-// 2.44
-// 3
-
-// sounds
-// score (how many bubbles per 30 seconds)
-// two players
-// determine a winner
-//button start
-// generate ball again after clicking
-// good job/ just another day/ super wow
-// user puts timer
-// simple registration for two users
-// fix sounds
-// live timer (countdown)
-// 3 rounds (levels) and every round you bubbles get smaller but user should pop more then in previous level
-
 /**
  * Since we start calculating position of bubble from the top left corner
  * and the bubble being a max size of 200 and able to grow 100 in each direction..
@@ -60,25 +44,18 @@ let onBubbleClick;
 
 let count;
 
-let clickCount = 1;
-
 function createDiv() {
   const maxBubbleHeight = (window.innerHeight / 100) * 42.8571428571;
   const minBubbleHeight = (window.innerHeight / 100) * 7.14285714286;
-  console.log(maxBubbleHeight, 'maxBubbleHeight');
-  console.log(minBubbleHeight, 'minBubbleHeight');
+
   const maxBubbleWidth = (window.innerWidth / 100) * 21.9619326501;
   const minBubbleWidth = (window.innerWidth / 100) * 3.66032210835;
-  console.log(maxBubbleWidth, 'maxBubbleWidth');
-  console.log(minBubbleWidth, 'minBubbleWidth');
 
   const maxBubbleSize =
     maxBubbleHeight < maxBubbleWidth ? maxBubbleHeight : maxBubbleWidth;
-  console.log(maxBubbleSize, 'MAXSIZE');
+
   const minBubbleSize =
     minBubbleHeight < minBubbleWidth ? minBubbleHeight : minBubbleWidth;
-  console.log(minBubbleSize, 'MINSIZE');
-  console.log('-----------------------------');
 
   message.innerHTML = '';
 
@@ -130,7 +107,7 @@ let timer;
 function startGame() {
   countdownDiv.style.display = 'block';
 
-  remainingTime = 30; // would be nice to make it dinamic (so it comes from input field)
+  remainingTime = 30;
   timer = setInterval(countdown, 1000); //set the countdown to every second
 
   createDiv();
@@ -168,7 +145,6 @@ function countdown() {
 function showResult() {
   // startBtn.removeEventListener("click", startGame);
 
-  clickCount++; //make it into raunds
   console.log(clickCount);
 
   countdownDiv.style.display = 'none';
