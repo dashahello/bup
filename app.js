@@ -185,10 +185,5 @@ function showResult() {
     count < 40 ? `You can do better!!!` : `Good job!!!`
   }`);
 }
-//
-//
 
 startBtn.addEventListener('click', startGame);
-// console.log(window.innerWidth);
-// message.innerHTML = window.innerHeight;
-////////////////
