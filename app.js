@@ -79,7 +79,6 @@ function createDiv() {
     minBubbleHeight < minBubbleWidth ? minBubbleHeight : minBubbleWidth;
   console.log(minBubbleSize, 'MINSIZE');
   console.log('-----------------------------');
-  //
 
   message.innerHTML = '';
 
