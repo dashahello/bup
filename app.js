@@ -151,8 +151,6 @@ function startGame() {
   // }, 3000);
 }
 
-//
-
 function countdown() {
   if (remainingTime > 0) {
     if (remainingTime <= 3) {
