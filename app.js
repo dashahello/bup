@@ -83,9 +83,7 @@ function createDiv() {
 
   onBubbleClick = () => {
     popSound.play();
-
     count++;
-
     removeDiv();
     createDiv();
   };
@@ -94,13 +92,16 @@ function createDiv() {
   window.onclick = function (event) {
     if (event.target.id === 'bubble') {
       onBubbleClick();
+      console.log(count);
     } else {
+      count--;
       removeDiv();
       createDiv();
+      console.log(count);
     }
   };
 
-  bubbleDiv.addEventListener('click', onBubbleClick);
+  // bubbleDiv.addEventListener('click', onBubbleClick);
 }
 
 function removeDiv() {
@@ -159,7 +160,7 @@ function showResult() {
   score.style.display = 'block';
   startBtn.style.display = 'block';
   bubbleDiv.style.display = 'none';
-  score.innerHTML = `YOUR SCORE: ${count}`;
+  score.innerHTML = `YOUR SCORE: ${count + 1}`;
 
   return (message.innerHTML = `${
     count < 40 ? `You can do better!!!` : `Good job!!!`
