@@ -37,12 +37,11 @@ const popSound = document.getElementById('sound1');
 const countdownSound = document.getElementById('sound2');
 
 let bubbleDiv;
-
 let remainingTime;
-
 let onBubbleClick;
-
 let count;
+let posX;
+let posY;
 
 function createDiv() {
   const maxBubbleHeight = (window.innerHeight / 100) * 42.8571428571;
@@ -63,11 +62,11 @@ function createDiv() {
 
   const color = randomRgbString(250);
 
-  const posX = randomNumberBetween(
+  posX = randomNumberBetween(
     bubbleSize / 2,
     window.innerWidth - bubbleSize - bubbleSize / 2
   );
-  const posY = randomNumberBetween(
+  posY = randomNumberBetween(
     bubbleSize / 2,
     window.innerHeight - bubbleSize - bubbleSize / 2
   );
@@ -89,6 +88,17 @@ function createDiv() {
 
     removeDiv();
     createDiv();
+  };
+  //checking if the correct ellement (div id="bubble") was clicked
+  //removing and creating new bubble div if user miscklicks
+  window.onclick = function (event) {
+    if (event.target.id === 'bubble') {
+      onBubbleClick();
+    } else {
+      removeDiv();
+      createDiv();
+      console.log('i think it works');
+    }
   };
 
   bubbleDiv.addEventListener('click', onBubbleClick);
@@ -144,8 +154,6 @@ function countdown() {
 //
 function showResult() {
   // startBtn.removeEventListener("click", startGame);
-
-  console.log(clickCount);
 
   countdownDiv.style.display = 'none';
 
