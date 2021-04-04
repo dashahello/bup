@@ -97,7 +97,6 @@ function createDiv() {
     } else {
       removeDiv();
       createDiv();
-      console.log('i think it works');
     }
   };
 
