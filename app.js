@@ -38,12 +38,13 @@ const countdownSound = document.getElementById('sound2');
 
 let bubbleDiv;
 let remainingTime;
+let timer;
 let onBubbleClick;
 let count;
 let posX;
 let posY;
 
-function createDiv() {
+function createBubble() {
   const maxBubbleHeight = (window.innerHeight / 100) * 42.8571428571;
   const minBubbleHeight = (window.innerHeight / 100) * 7.14285714286;
 
@@ -52,11 +53,10 @@ function createDiv() {
 
   const maxBubbleSize =
     maxBubbleHeight < maxBubbleWidth ? maxBubbleHeight : maxBubbleWidth;
-
   const minBubbleSize =
     minBubbleHeight < minBubbleWidth ? minBubbleHeight : minBubbleWidth;
 
-  message.innerHTML = '';
+  message.innerHTML = ''; //??????
 
   const bubbleSize = randomNumberBetween(maxBubbleSize, minBubbleSize);
 
@@ -81,61 +81,26 @@ function createDiv() {
 
   bubbles.appendChild(bubbleDiv);
 
-  onBubbleClick = () => {
-    popSound.play();
-    count++;
-    removeDiv();
-    createDiv();
-  };
-  //checking if the correct ellement (div id="bubble") was clicked
-  //removing and creating new bubble div if user miscklicks
-  window.onclick = function (event) {
-    if (event.target.id === 'bubble') {
-      onBubbleClick();
-      console.log(count);
-    } else {
-      count--;
-      removeDiv();
-      createDiv();
-      console.log(count);
-    }
-  };
-
-  // bubbleDiv.addEventListener('click', onBubbleClick);
+  // onBubbleClick = () => {
+  //   popSound.play();
+  //   count++;
+  //   removeBubble();
+  //   createBubble();
+  // };
+  // //checking if the correct ellement (div id="bubble") was clicked
+  // //removing and creating new bubble div if user miscklicks (also substracts 1 from score)
+  // window.onclick = function (event) {
+  //   if (event.target.id === 'bubble') {
+  //     onBubbleClick();
+  //   } else {
+  //     removeBubble();
+  //     createBubble();
+  //   }
+  // };
 }
-
-function removeDiv() {
-  if (onBubbleClick) {
-    bubbleDiv.removeEventListener('click', onBubbleClick);
-  }
-
+//
+function removeBubble() {
   bubbles.removeChild(bubbleDiv);
-}
-
-let timer;
-
-function startGame() {
-  countdownDiv.style.display = 'block';
-
-  remainingTime = 30;
-  timer = setInterval(countdown, 1000); //set the countdown to every second
-
-  createDiv();
-  countdown();
-  count = 0;
-  score.style.display = 'none';
-  startBtn.style.display = 'none';
-
-  // setTimeout(() => {
-  //   // startBtn.removeEventListener("click", startGame);
-  //   score.style.display = "block";
-  //   startBtn.style.display = "block";
-  //   bubbleDiv.style.display = "none";
-  //   score.innerHTML = `YOUR SCORE: ${count}`;
-  //   return (message.innerHTML = `${
-  //     count < 4 ? `You can do better!!!` : `Good job!!!`
-  //   }`);
-  // }, 3000);
 }
 
 function countdown() {
@@ -147,24 +112,68 @@ function countdown() {
     remainingTime--; //we subtract the second each iteration
   } else {
     clearTimeout(timer);
-    showResult();
+    endGame();
   }
 }
-//
-//
-function showResult() {
-  // startBtn.removeEventListener("click", startGame);
+
+function startGame() {
+  window.addEventListener('click', onClickFunction);
+
+  countdownDiv.style.display = 'block';
+
+  remainingTime = 30;
+  timer = setInterval(countdown, 1000); //set the countdown to every second
+
+  createBubble();
+  countdown();
+  count = 0;
+  score.style.display = 'none';
+  startBtn.style.display = 'none';
+}
+
+function endGame() {
+  window.removeEventListener('click', onClickFunction, false);
 
   countdownDiv.style.display = 'none';
 
   score.style.display = 'block';
   startBtn.style.display = 'block';
   bubbleDiv.style.display = 'none';
-  score.innerHTML = `YOUR SCORE: ${count + 1}`;
+
+  score.innerHTML = `YOUR SCORE: ${count}`;
 
   return (message.innerHTML = `${
     count < 40 ? `You can do better!!!` : `Good job!!!`
   }`);
 }
 
+//
+onClickFunction = (event) => {
+  if (event.target.id === 'bubble') {
+    popSound.play();
+    count++;
+    removeBubble();
+    createBubble();
+  } else if (event.target.id === 'startBtn') {
+    console.log('game started');
+  } else {
+    count--;
+    removeBubble();
+    createBubble();
+  }
+};
+
 startBtn.addEventListener('click', startGame);
+
+//
+// old timeout function
+// setTimeout(() => {
+//   // startBtn.removeEventListener("click", startGame);
+//   score.style.display = "block";
+//   startBtn.style.display = "block";
+//   bubbleDiv.style.display = "none";
+//   score.innerHTML = `YOUR SCORE: ${count}`;
+//   return (message.innerHTML = `${
+//     count < 4 ? `You can do better!!!` : `Good job!!!`
+//   }`);
+// }, 3000);
