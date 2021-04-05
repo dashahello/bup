@@ -80,23 +80,6 @@ function createBubble() {
   bubbleDiv.style.left = posX + 'px';
 
   bubbles.appendChild(bubbleDiv);
-
-  // onBubbleClick = () => {
-  //   popSound.play();
-  //   count++;
-  //   removeBubble();
-  //   createBubble();
-  // };
-  // //checking if the correct ellement (div id="bubble") was clicked
-  // //removing and creating new bubble div if user miscklicks (also substracts 1 from score)
-  // window.onclick = function (event) {
-  //   if (event.target.id === 'bubble') {
-  //     onBubbleClick();
-  //   } else {
-  //     removeBubble();
-  //     createBubble();
-  //   }
-  // };
 }
 //
 function removeBubble() {
