@@ -35,6 +35,7 @@ const message = document.getElementById('message');
 const countdownDiv = document.getElementById('countdown_div');
 const popSound = document.getElementById('sound1');
 const countdownSound = document.getElementById('sound2');
+//const timeInputValue = document.getElementById('timer').value;
 
 let bubbleDiv;
 let remainingTime;
@@ -43,6 +44,14 @@ let onBubbleClick;
 let count;
 let posX;
 let posY;
+
+//
+function setTimer() {
+  remainingTime = document.getElementById('timer').value;
+  console.log(remainingTime);
+}
+
+//
 
 function createBubble() {
   const maxBubbleHeight = (window.innerHeight / 100) * 42.8571428571;
@@ -100,13 +109,10 @@ function countdown() {
 }
 
 function startGame() {
+  setTimer();
   window.addEventListener('click', onClickFunction);
-
   countdownDiv.style.display = 'block';
-
-  remainingTime = 30;
   timer = setInterval(countdown, 1000); //set the countdown to every second
-
   createBubble();
   countdown();
   count = 0;
