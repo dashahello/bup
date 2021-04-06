@@ -132,7 +132,7 @@ function endGame() {
   score.innerHTML = `YOUR SCORE: ${count}`;
 
   return (message.innerHTML = `${
-    count < 40 ? `You can do better!!!` : `Good job!!!`
+    count < remainingTime + 10 ? `You can do better!!!` : `Good job!!!`
   }`);
 }
 
