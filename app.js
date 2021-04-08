@@ -35,6 +35,9 @@ const message = document.getElementById('message');
 const countdownDiv = document.getElementById('countdown_div');
 const popSound = document.getElementById('sound1');
 const countdownSound = document.getElementById('sound2');
+const miscklickDiv = document.getElementById('miscklickDiv');
+let miscklicksCheckBox = document.getElementById('miscklick');
+const timerDiv = document.getElementById('timerDiv');
 
 let bubbleDiv;
 let remainingTime;
@@ -85,14 +88,14 @@ function createBubble() {
 
   bubbles.appendChild(bubbleDiv);
 
-  if (!document.getElementById('miscklick').checked) {
+  if (!miscklicksCheckBox.checked) {
     bubbleDiv.addEventListener('click', onBubbleClick);
   }
 }
 
 function removeBubble() {
   bubbles.removeChild(bubbleDiv);
-  if (!document.getElementById('miscklick').checked) {
+  if (!miscklicksCheckBox.checked) {
     bubbleDiv.removeEventListener('click', onBubbleClick);
   }
 }
@@ -111,12 +114,15 @@ function countdown() {
 }
 
 function startGame() {
-  if (document.getElementById('miscklick').checked) {
+  if (miscklicksCheckBox.checked) {
     window.addEventListener('click', onClickFunction);
   }
   setTimer();
 
+  miscklickDiv.style.display = 'none';
   countdownDiv.style.display = 'block';
+  timerDiv.style.display = 'none';
+
   timer = setInterval(countdown, 1000); //set the countdown to every second
   createBubble();
   countdown();
@@ -126,12 +132,13 @@ function startGame() {
 }
 
 function endGame() {
-  if (document.getElementById('miscklick').checked) {
+  if (miscklicksCheckBox.checked) {
     window.removeEventListener('click', onClickFunction, false);
   }
 
+  miscklickDiv.style.display = 'block';
   countdownDiv.style.display = 'none';
-
+  timerDiv.style.display = 'block';
   score.style.display = 'block';
   startBtn.style.display = 'block';
   bubbleDiv.style.display = 'none';
@@ -152,16 +159,9 @@ onBubbleClick = () => {
   createBubble();
 };
 
-function myFunction() {
-  popSound.play();
-  count++;
-  removeBubble();
-  createBubble();
-}
-
 onClickFunction = (event) => {
   if (event.target.id === 'bubble') {
-    myFunction();
+    onBubbleClick();
   } else if (event.target.id === 'startBtn') {
     console.log('game started');
   } else {
