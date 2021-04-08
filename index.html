@@ -11,18 +11,14 @@
   <div id="countdown_div"></div>
   <div id="score"></div>
   <div id="message">Set up the timer below, press "STRAT THE GAME" and try to pop as many bubbles as possible :)</div>
+    <input type="checkbox" id="miscklick" name="miscklick" value="miscklick">
+    <label for="miscklick">Miscklicks enabled (every time you miscklick your score will go down by one point) </label>
+    <br>
   <label for="timer">Timer for</label>
   <input type="number" id="timer" min="10" max="60" value="10">
   <label for="timer">seconds</label>
-  <div id="demo"></div>
-  <!-- <select name="seconds" id="time">
-    <option value="10">10</option>
-    <option value="20">20</option>
-    <option value="30">30</option>
-    <option value="40">40</option>
-  </select> -->
+  <br>
   <button id="startBtn">START THE GAME</button>
-  <!-- <button id="refreshBtn">REFRESH</button> -->
    <audio src="./assets/mixkit-quick-jump-arcade-game-239.wav" id="sound1"></audio> 
   <audio src="./assets/soft-bell-countdown.wav" id="sound2"></audio>
   <script src="app.js"></script>
