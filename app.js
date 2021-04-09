@@ -46,6 +46,7 @@ let onBubbleClick;
 let count;
 let posX;
 let posY;
+let bubbleLifetime;
 
 function setTimer() {
   remainingTime = document.getElementById('timer').value;
@@ -87,6 +88,10 @@ function createBubble() {
   bubbleDiv.style.left = posX + 'px';
 
   bubbles.appendChild(bubbleDiv);
+
+  bubbleLifetime = setTimeout(function () {
+    removeAndCreateNew();
+  }, 1000);
 
   if (!miscklicksCheckBox.checked) {
     bubbleDiv.addEventListener('click', onBubbleClick);
@@ -136,6 +141,8 @@ function endGame() {
     window.removeEventListener('click', onClickFunction, false);
   }
 
+  clearTimeout(bubbleLifetime);
+
   miscklickDiv.style.display = 'block';
   countdownDiv.style.display = 'none';
   timerDiv.style.display = 'block';
@@ -146,14 +153,22 @@ function endGame() {
   score.innerHTML = `YOUR SCORE: ${count}`;
 
   return (message.innerHTML = `${
-    count < document.getElementById('timer').value + 10
+    count <
+    parseInt(document.getElementById('timer').value) +
+      (parseInt(document.getElementById('timer').value) / 100) * 30 //30% from timer
       ? `You can do better!!!`
       : `Good job!!!`
   }`);
 }
 
+removeAndCreateNew = () => {
+  removeBubble();
+  createBubble();
+};
+
 onBubbleClick = () => {
   popSound.play();
+  clearTimeout(bubbleLifetime);
   count++;
   removeBubble();
   createBubble();
@@ -165,6 +180,7 @@ onClickFunction = (event) => {
   } else if (event.target.id === 'startBtn') {
     console.log('game started');
   } else {
+    clearTimeout(bubbleLifetime);
     count--;
     removeBubble();
     createBubble();
