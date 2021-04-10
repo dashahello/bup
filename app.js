@@ -158,10 +158,7 @@ function endGame() {
   bubbleDiv.style.display = 'none';
 
   score.innerHTML = `YOUR SCORE: ${count}`;
-  console.log(
-    parseInt(customizedTimer.value) +
-      (parseInt(customizedTimer.value) / 100) * 30
-  );
+
   return (message.innerHTML = `${
     count <
     parseInt(customizedTimer.value) +
