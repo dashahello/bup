@@ -39,6 +39,7 @@ const miscklickDiv = document.getElementById('miscklick_div');
 let miscklicksCheckBox = document.getElementById('miscklick');
 const timerDiv = document.getElementById('timer_div');
 const customizedTimer = document.getElementById('customized_timer');
+const numberOfMiscklicks = document.getElementById('number_of_miscklicks');
 
 let bubbleDiv;
 let remainingTime;
@@ -48,6 +49,7 @@ let count;
 let posX;
 let posY;
 let bubbleLifetime;
+let miscklicksCount;
 
 function setTimer() {
   if (customizedTimer.value < 10) {
@@ -129,22 +131,27 @@ function startGame() {
   if (miscklicksCheckBox.checked) {
     window.addEventListener('click', onClickFunction);
   }
+
   setTimer();
+
+  timer = setInterval(countdown, 1000); //set the countdown to every second
+
+  createBubble();
+  countdown();
+
+  count = 0;
+  miscklicksCount = 0;
 
   miscklickDiv.style.display = 'none';
   countdownDiv.style.display = 'block';
   timerDiv.style.display = 'none';
-
-  timer = setInterval(countdown, 1000); //set the countdown to every second
-  createBubble();
-  countdown();
-  count = 0;
   score.style.display = 'none';
   startBtn.style.display = 'none';
 }
 
 function endGame() {
   if (miscklicksCheckBox.checked) {
+    numberOfMiscklicks.innerHTML = `Miscklicks: ${miscklicksCount}`;
     window.removeEventListener('click', onClickFunction, false);
   }
 
@@ -188,6 +195,7 @@ onClickFunction = (event) => {
     console.log('game started');
   } else {
     clearTimeout(bubbleLifetime);
+    miscklicksCount++;
     count--;
     removeBubble();
     createBubble();
