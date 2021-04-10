@@ -35,9 +35,10 @@ const message = document.getElementById('message');
 const countdownDiv = document.getElementById('countdown_div');
 const popSound = document.getElementById('sound1');
 const countdownSound = document.getElementById('sound2');
-const miscklickDiv = document.getElementById('miscklickDiv');
+const miscklickDiv = document.getElementById('miscklick_div');
 let miscklicksCheckBox = document.getElementById('miscklick');
-const timerDiv = document.getElementById('timerDiv');
+const timerDiv = document.getElementById('timer_div');
+const customizedTimer = document.getElementById('customized_timer');
 
 let bubbleDiv;
 let remainingTime;
@@ -49,7 +50,7 @@ let posY;
 let bubbleLifetime;
 
 function setTimer() {
-  remainingTime = document.getElementById('timer').value;
+  remainingTime = customizedTimer.value;
 }
 
 function createBubble() {
@@ -154,8 +155,8 @@ function endGame() {
 
   return (message.innerHTML = `${
     count <
-    parseInt(document.getElementById('timer').value) +
-      (parseInt(document.getElementById('timer').value) / 100) * 30 //30% from timer
+    parseInt(customizedTimer.value) +
+      (parseInt(customizedTimer.value) / 100) * 30 //30% from timer
       ? `You can do better!!!`
       : `Good job!!!`
   }`);
