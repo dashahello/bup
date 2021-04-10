@@ -93,6 +93,9 @@ function createBubble() {
   bubbleDiv.style.width = bubbleSize + 'px';
   bubbleDiv.style.height = bubbleSize + 'px';
   bubbleDiv.style.background = color;
+  // bubbleDiv.style.backgroundImage =
+  //   '-moz-linear-gradient(' + red + ', ' + blue + ')';
+
   bubbleDiv.style.top = posY + 'px';
   bubbleDiv.style.left = posX + 'px';
 
