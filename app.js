@@ -50,6 +50,12 @@ let posY;
 let bubbleLifetime;
 
 function setTimer() {
+  if (customizedTimer.value < 10) {
+    customizedTimer.value = 10;
+  } else if (customizedTimer.value > 60) {
+    customizedTimer.value = 60;
+  }
+
   remainingTime = customizedTimer.value;
 }
 
@@ -152,7 +158,10 @@ function endGame() {
   bubbleDiv.style.display = 'none';
 
   score.innerHTML = `YOUR SCORE: ${count}`;
-
+  console.log(
+    parseInt(customizedTimer.value) +
+      (parseInt(customizedTimer.value) / 100) * 30
+  );
   return (message.innerHTML = `${
     count <
     parseInt(customizedTimer.value) +
