@@ -50,10 +50,32 @@ body {
   );
 }
 
-/* Demo Stuff End -> */
-
-/* <- Magic Stuff Start */
-
 #startBtn:hover {
   background-position: right center; /* change the direction of the change here */
+}
+
+#message {
+  padding: 10px;
+  margin: 10px;
+}
+
+#customized_timer {
+  border: 2px groove #fbc2eb;
+  border-radius: 10px;
+  padding: 5px;
+  margin: 10px;
+}
+
+#miscklick_div {
+  padding: 10px;
+  margin: 10px;
+}
+
+#score {
+  margin: 10px;
+}
+
+#countdown_div {
+  margin: 10px;
+}
 }
