@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,26 +10,25 @@
   <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
   <div id="bubbles"></div>
   <div id="countdown_div"></div>
   <div id="score"></div>
   <div id="number_of_miscklicks"></div>
-  <div id="message">Set up the timer below, press "START THE GAME" and try to pop as many bubbles as possible :)</div>
+  <div id="message">Set up the timer below, press "START THE GAME" and try to pop as many bubbles as possible (remember that every bubble has a lifetime of 1 second so it will disappear unless you click on it). Good luck :)</div>
   <div id="miscklick_div">
     <input type="checkbox" id="miscklick" name="miscklick" value="miscklick">
     <label for="miscklick">Miscklicks enabled (every time you miscklick your score will go down by one point) </label>
     <br>
-    </div>
-    <div id="timer_div">
-  <label for="customized_timer">Timer for
-  <input type="number" id="customized_timer" min="10" max="60" value="10">
-  seconds</label>
-  <br>
   </div>
-   <audio src="./assets/mixkit-quick-jump-arcade-game-239.wav" id="sound1"></audio> 
+  <div id="timer_div"><label for="customized_timer">Timer for
+      <input type="number" id="customized_timer" min="10" max="60" value="10">
+      seconds</label>
+    <br>
+  </div>
+  <audio src="./assets/mixkit-quick-jump-arcade-game-239.wav" id="sound1"></audio>
   <audio src="./assets/soft-bell-countdown.wav" id="sound2"></audio>
-    <button id="startBtn">START THE GAME</button>
+  <button id="startBtn">START THE GAME</button>
   <script src="app.js"></script>
-</body>
-</html>
+</body></html>

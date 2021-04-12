@@ -1,7 +1,5 @@
 * {
   box-sizing: border-box;
-  /* margin: 0;
-  padding: 0; */
 }
 
 body {
@@ -77,5 +75,4 @@ body {
 
 #countdown_div {
   margin: 10px;
-}
 }
