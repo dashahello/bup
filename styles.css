@@ -53,7 +53,10 @@ body {
 }
 
 #message {
-  padding: 10px;
+  background: #a6c1ee;
+  color: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
   margin: 10px;
 }
 
@@ -65,7 +68,10 @@ body {
 }
 
 #miscklick_div {
-  padding: 10px;
+  background: #fbc2eb;
+  color: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
   margin: 10px;
 }
 
@@ -74,5 +80,12 @@ body {
 }
 
 #countdown_div {
+  margin: 10px;
+}
+#timer_div {
+  background: #a6c1ee;
+  color: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
   margin: 10px;
 }
