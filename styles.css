@@ -56,6 +56,7 @@ body {
   background: #a6c1ee;
   color: #ffffff;
   border-radius: 10px;
+  box-shadow: 5px 5px 2px #fbc2eb;
   padding: 20px;
   margin: 10px;
 }
@@ -68,9 +69,10 @@ body {
 }
 
 #miscklick_div {
-  background: #fbc2eb;
+  background: #a6c1ee;
   color: #ffffff;
   border-radius: 10px;
+  box-shadow: 5px 5px 2px #fbc2eb;
   padding: 20px;
   margin: 10px;
 }
@@ -86,6 +88,29 @@ body {
   background: #a6c1ee;
   color: #ffffff;
   border-radius: 10px;
+  box-shadow: 5px 5px 2px #fbc2eb;
   padding: 20px;
   margin: 10px;
+}
+@media screen and (max-width: 992px) {
+  #message {
+    width: 600px;
+  }
+  #miscklick_div {
+    width: 600px;
+  }
+  #timer_div {
+    width: 600px;
+  }
+}
+@media screen and (max-width: 600px) {
+  #message {
+    width: 300px;
+  }
+  #miscklick_div {
+    width: 300px;
+  }
+  #timer_div {
+    width: 300px;
+  }
 }
