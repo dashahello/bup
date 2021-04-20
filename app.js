@@ -73,8 +73,6 @@ function createBubble() {
   const minBubbleSize =
     minBubbleHeight < minBubbleWidth ? minBubbleHeight : minBubbleWidth;
 
-  message.innerHTML = '';
-
   const bubbleSize = randomNumberBetween(maxBubbleSize, minBubbleSize);
 
   const color = randomRgbString(250);
@@ -142,6 +140,7 @@ function startGame() {
   count = 0;
   miscklicksCount = 0;
 
+  message.style.display = 'none';
   miscklickDiv.style.display = 'none';
   countdownDiv.style.display = 'block';
   timerDiv.style.display = 'none';
